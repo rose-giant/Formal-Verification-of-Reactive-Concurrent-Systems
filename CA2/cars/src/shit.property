@@ -1,0 +1,17 @@
+property {
+
+	define {
+		finished1 = auto1.lastStep;
+		//finished2 = auto2.lastStep;
+		
+		isSafetyViolated = ctrl.safetyCheck;
+	}
+
+	LTL {
+		
+		Starvation1: F (finished1);
+		//Starvation2: F (finished2);
+
+		Safety: G(!isSafetyViolated);
+	}
+}

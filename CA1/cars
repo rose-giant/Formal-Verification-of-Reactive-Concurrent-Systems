@@ -1,0 +1,159 @@
+#define NUM_CARS 5
+#define HALL_LENGTH 10
+#define LINE_COUNT 2
+#define MAX_AUTO 10 
+#define MAX_MANNED 10 
+
+chan infraAutoCarChannel = [1] of { int, bool, byte };
+chan infraMannedCarChannel = [1] of { int, bool, byte };
+
+chan autoCarChannel = [1] of { int, bool, byte };
+chan mannedCarChannel = [1] of { int, bool, byte };
+
+chan autoStopChannel [MAX_AUTO] = [1] of { byte };
+chan mannedChangeLine [MAX_MANNED] = [1] of { byte };
+
+proctype autonomous(byte autoId){
+	int autoX = 1;
+	bool autoLine = false;
+	bool goingUp = true;
+	byte stopSignal;
+
+	do :: true ->
+		autoCarChannel ! autoId, autoLine, autoX;
+		do :: true->
+			if 
+				:: autoStopChannel[autoId] ? 0 -> 
+					stopSignal = 0;break;
+				:: else;
+			fi;
+		od;
+
+		if  
+			:: autoX == 1 || autoX == HALL_LENGTH ->
+				if
+					:: autoLine = 0;
+					:: autoLine = 1;
+				fi;
+		fi;
+
+		if
+			:: autoX == 1 && goingUp -> autoX++;
+			:: autoX == 1 && !goingUp -> 
+				goingUp = !goingUp;
+
+			:: autoX == 1 && !goingUp -> autoX--;
+			:: autoX == HALL_LENGTH && goingUp -> goingUp = !goingUp;
+
+			:: autoX < HALL_LENGTH && autoX > 1 && goingUp -> autoX++; 
+			:: autoX < HALL_LENGTH && autoX > 1 && !goingUp -> autoX--;
+		fi;
+	od
+} 
+
+proctype manned(byte mannedId){
+	int mannedX = 10;
+	bool mannedLine = true;
+
+	do :: true ->
+		if
+			:: mannedChangeLine[mannedId] ? 1-> mannedLine = !mannedLine;
+			:: else -> 
+				if
+					:: true -> mannedLine = false;
+					:: true -> mannedLine = true;
+				fi;
+		fi;	
+
+		if
+			:: mannedX == 1 || mannedX == HALL_LENGTH->
+				if
+					::mannedX == 1 -> mannedX++;
+					::mannedX == HALL_LENGTH -> mannedX--;
+					::break;
+				fi;
+			:: mannedX < HALL_LENGTH && mannedX > 1 ->
+				if
+					:: mannedX++;
+					:: mannedX--;
+				fi;
+		fi;
+
+		mannedCarChannel ! mannedId, mannedLine, mannedX;
+	od
+}
+
+typedef INITIDS {
+	int autoIds[MAX_AUTO];
+}
+
+proctype infrastructure() {
+	byte mannedId, autoId;
+	int autoLine, mannedLine, autoBlock, mannedBlock;
+
+	do:: true->
+			if
+				:: infraAutoCarChannel ? autoId, autoLine, autoBlock;
+					autoCarChannel ! autoId, autoLine, autoBlock;
+				:: else;
+			fi;
+
+			if
+				:: infraMannedCarChannel ? mannedId, mannedLine, mannedBlock;
+					mannedCarChannel ! mannedId, mannedLine, mannedBlock;
+				:: else;
+			fi;
+	od	
+}
+
+proctype controller() {
+	byte autoId, mannedId;
+	int autoLine = true, mannedLine = false, autoBlock = -10, mannedBlock = -20;
+
+	//autoStopChannel[3] ! 0;
+
+	do:: true->
+		do :: true ->
+			if
+				:: autoCarChannel ? autoId, autoLine, autoBlock;
+				:: else;
+			fi;
+
+			if
+				:: mannedCarChannel ? mannedId, mannedLine, mannedBlock;
+				:: else -> break;
+			fi;
+		od;
+
+		do :: true->
+			if
+				:: mannedLine == autoLine && mannedBlock == autoBlock -> 
+					printf("Accident!");
+					//ltl noCollision { [](mannedLine == autoLine && mannedBlock == autoBlock) }
+
+				:: autoLine != mannedLine && autoBlock == mannedBlock ->
+					autoStopChannel[autoId] ! 1;
+	
+				:: autoLine == mannedLine && (autoBlock - mannedBlock == 1 || mannedBlock - autoBlock == 1)->
+					//tell the manned car to change its line
+					autoStopChannel[autoId] ! 1;
+					mannedChangeLine[mannedId] ! 1;
+
+				:: else -> 
+					autoStopChannel[autoId] ! 0;
+					break;
+			fi;	
+		od
+	od
+}
+
+init {
+	run infrastructure();
+	run controller();
+	run autonomous(3);
+	//run autonomous(4);
+	run manned(2);
+}
+
+//ltl noCollision { [](autoX != mannedX) }
+
