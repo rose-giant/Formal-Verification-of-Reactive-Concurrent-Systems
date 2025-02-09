@@ -1,0 +1,3573 @@
+<transitionsystem>
+<state id="1_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="2_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c1">requestTicket()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="1_0" destination="2_0" executionTime="0" shift="0"> <messageserver sender="c1" owner="c1" title="TRY"/></transition>
+<state id="3_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c2">requestTicket()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="1_0" destination="3_0" executionTime="0" shift="0"> <messageserver sender="c2" owner="c2" title="TRY"/></transition>
+<state id="4_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="2_0" destination="4_0" executionTime="0" shift="0"> <messageserver sender="c1" owner="a" title="REQUESTTICKET"/></transition>
+<state id="5_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c1">requestTicket()</message>
+			<message arrival="0" deadline="infinity" sender="c2">requestTicket()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="2_0" destination="5_0" executionTime="0" shift="0"> <messageserver sender="c2" owner="c2" title="TRY"/></transition>
+<state id="6_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="3_0" destination="6_0" executionTime="0" shift="0"> <messageserver sender="c2" owner="a" title="REQUESTTICKET"/></transition>
+<transition source="3_0" destination="5_0" executionTime="0" shift="0"> <messageserver sender="c1" owner="c1" title="TRY"/></transition>
+<state id="7_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>0</now>
+		<pc>0</pc>
+		<res>2</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="4_0" destination="7_0" executionTime="0" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="8_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c2">requestTicket()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="4_0" destination="8_0" executionTime="0" shift="0"> <messageserver sender="c2" owner="c2" title="TRY"/></transition>
+<transition source="5_0" destination="8_0" executionTime="0" shift="0"> <messageserver sender="c1" owner="a" title="REQUESTTICKET"/></transition>
+<state id="9_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c1">requestTicket()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="5_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="c2" owner="a" title="REQUESTTICKET"/></transition>
+<state id="10_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c2">requestTicket()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>0</now>
+		<pc>0</pc>
+		<res>2</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="7_0" destination="10_0" executionTime="0" shift="0"> <messageserver sender="c2" owner="c2" title="TRY"/></transition>
+<state id="11_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="8_0" destination="11_0" executionTime="0" shift="0"> <messageserver sender="c2" owner="a" title="REQUESTTICKET"/></transition>
+<transition source="8_0" destination="10_0" executionTime="0" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<transition source="9_0" destination="11_0" executionTime="0" shift="0"> <messageserver sender="c1" owner="a" title="REQUESTTICKET"/></transition>
+<state id="12_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c1">requestTicket()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>0</now>
+		<pc>0</pc>
+		<res>2</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="9_0" destination="12_0" executionTime="0" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="13_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>0</now>
+		<pc>0</pc>
+		<res>2</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="14_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>2</now>
+		<pc>0</pc>
+		<res>2</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="13_0" destination="14_0" executionTime="0" shift="0"> <time value="2"/></transition>
+<transition source="10_0" destination="13_0" executionTime="0" shift="0"> <messageserver sender="c2" owner="a" title="REQUESTTICKET"/></transition>
+<state id="15_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>0</now>
+		<pc>0</pc>
+		<res>2</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="16_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>2</now>
+		<pc>0</pc>
+		<res>2</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="15_0" destination="16_0" executionTime="0" shift="0"> <time value="2"/></transition>
+<transition source="11_0" destination="15_0" executionTime="0" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<transition source="11_0" destination="13_0" executionTime="0" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<transition source="12_0" destination="15_0" executionTime="0" shift="0"> <messageserver sender="c1" owner="a" title="REQUESTTICKET"/></transition>
+<state id="17_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>0</now>
+		<pc>0</pc>
+		<res>2</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="6_0" destination="17_0" executionTime="0" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<transition source="6_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="c1" owner="c1" title="TRY"/></transition>
+<transition source="17_0" destination="12_0" executionTime="0" shift="0"> <messageserver sender="c1" owner="c1" title="TRY"/></transition>
+<state id="18_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="ts">ticketIssued(c1)</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="14_0" destination="18_0" executionTime="2" shift="0"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<state id="19_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="ts">ticketIssued(c2)</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="16_0" destination="19_0" executionTime="2" shift="0"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<state id="20_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="18_0" destination="20_0" executionTime="2" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="21_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="ts">ticketIssued(c1)</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>2</now>
+		<pc>0</pc>
+		<res>4</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="18_0" destination="21_0" executionTime="2" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="22_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="19_0" destination="22_0" executionTime="2" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="23_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="ts">ticketIssued(c2)</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>2</now>
+		<pc>0</pc>
+		<res>4</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="19_0" destination="23_0" executionTime="2" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="24_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>2</now>
+		<pc>0</pc>
+		<res>4</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="20_0" destination="24_0" executionTime="2" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="25_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="20_0" destination="25_0" executionTime="2" shift="0"> <messageserver sender="a" owner="c1" title="TICKETISSUED"/></transition>
+<state id="26_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>2</now>
+		<pc>0</pc>
+		<res>4</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="22_0" destination="26_0" executionTime="2" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="27_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="22_0" destination="27_0" executionTime="2" shift="0"> <messageserver sender="a" owner="c2" title="TICKETISSUED"/></transition>
+<transition source="23_0" destination="26_0" executionTime="2" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="28_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>2</now>
+		<pc>0</pc>
+		<res>4</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="29_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>4</now>
+		<pc>0</pc>
+		<res>4</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="28_0" destination="29_0" executionTime="2" shift="0"> <time value="2"/></transition>
+<transition source="25_0" destination="28_0" executionTime="2" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="30_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>2</now>
+		<pc>0</pc>
+		<res>4</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="31_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="24" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>4</now>
+		<pc>0</pc>
+		<res>4</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="30_0" destination="31_0" executionTime="2" shift="0"> <time value="2"/></transition>
+<transition source="27_0" destination="30_0" executionTime="2" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<transition source="26_0" destination="30_0" executionTime="2" shift="0"> <messageserver sender="a" owner="c2" title="TICKETISSUED"/></transition>
+<transition source="21_0" destination="24_0" executionTime="2" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<transition source="24_0" destination="28_0" executionTime="2" shift="0"> <messageserver sender="a" owner="c1" title="TICKETISSUED"/></transition>
+<state id="32_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="4" deadline="infinity" sender="ts">ticketIssued(c1)</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="31_0" destination="32_0" executionTime="4" shift="0"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<state id="33_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="4" deadline="infinity" sender="ts">ticketIssued(c2)</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="29_0" destination="33_0" executionTime="4" shift="0"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<state id="34_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="4" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="32_0" destination="34_0" executionTime="4" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="35_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="4" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="33_0" destination="35_0" executionTime="4" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="36_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="37_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="36_0" destination="37_0" executionTime="4" shift="0"> <time value="28"/></transition>
+<transition source="34_0" destination="36_0" executionTime="4" shift="0"> <messageserver sender="a" owner="c1" title="TICKETISSUED"/></transition>
+<state id="38_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>4</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="39_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="38_0" destination="39_0" executionTime="4" shift="0"> <time value="28"/></transition>
+<transition source="35_0" destination="38_0" executionTime="4" shift="0"> <messageserver sender="a" owner="c2" title="TICKETISSUED"/></transition>
+<state id="40_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c2">requestTicket()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="37_0" destination="40_0" executionTime="32" shift="0"> <messageserver sender="c2" owner="c2" title="TRY"/></transition>
+<state id="41_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="infinity" sender="c1">requestTicket()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="39_0" destination="41_0" executionTime="32" shift="0"> <messageserver sender="c1" owner="c1" title="TRY"/></transition>
+<state id="42_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="56" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="40_0" destination="42_0" executionTime="32" shift="0"> <messageserver sender="c2" owner="a" title="REQUESTTICKET"/></transition>
+<state id="43_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="56" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="41_0" destination="43_0" executionTime="32" shift="0"> <messageserver sender="c1" owner="a" title="REQUESTTICKET"/></transition>
+<state id="44_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="56" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>32</now>
+		<pc>0</pc>
+		<res>34</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="45_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="56" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>34</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="44_0" destination="45_0" executionTime="32" shift="0"> <time value="2"/></transition>
+<transition source="42_0" destination="44_0" executionTime="32" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="46_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="56" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>32</now>
+		<pc>0</pc>
+		<res>34</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>32</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="47_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="56" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>34</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="46_0" destination="47_0" executionTime="32" shift="0"> <time value="2"/></transition>
+<transition source="43_0" destination="46_0" executionTime="32" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="48_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="ts">ticketIssued(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="45_0" destination="48_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<state id="49_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">requestTicket()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="56" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>34</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="45_0" destination="49_0" executionTime="34" shift="0"> <messageserver sender="c1" owner="c1" title="TRY"/></transition>
+<state id="50_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="ts">ticketIssued(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="47_0" destination="50_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<state id="51_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">requestTicket()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="56" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>34</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="47_0" destination="51_0" executionTime="34" shift="0"> <messageserver sender="c2" owner="c2" title="TRY"/></transition>
+<state id="52_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="48_0" destination="52_0" executionTime="34" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="53_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">requestTicket()</message>
+			<message arrival="34" deadline="infinity" sender="ts">ticketIssued(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="48_0" destination="53_0" executionTime="34" shift="0"> <messageserver sender="c1" owner="c1" title="TRY"/></transition>
+<state id="54_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="50_0" destination="54_0" executionTime="34" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="55_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">requestTicket()</message>
+			<message arrival="34" deadline="infinity" sender="ts">ticketIssued(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="50_0" destination="55_0" executionTime="34" shift="0"> <messageserver sender="c2" owner="c2" title="TRY"/></transition>
+<state id="56_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="56" sender="a">requestTicket(c1)</message>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>34</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="51_0" destination="56_0" executionTime="34" shift="0"> <messageserver sender="c2" owner="a" title="REQUESTTICKET"/></transition>
+<transition source="51_0" destination="55_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<state id="57_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="ts">ticketIssued(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="53_0" destination="57_0" executionTime="34" shift="0"> <messageserver sender="c1" owner="a" title="REQUESTTICKET"/></transition>
+<state id="58_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">requestTicket()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="53_0" destination="58_0" executionTime="34" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="59_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="ts">ticketIssued(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="55_0" destination="59_0" executionTime="34" shift="0"> <messageserver sender="c2" owner="a" title="REQUESTTICKET"/></transition>
+<state id="60_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">requestTicket()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="55_0" destination="60_0" executionTime="34" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<transition source="56_0" destination="59_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<state id="61_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="57_0" destination="61_0" executionTime="34" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="62_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="ts">ticketIssued(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>36</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="57_0" destination="62_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="63_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="59_0" destination="63_0" executionTime="34" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="64_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="ts">ticketIssued(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>36</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="59_0" destination="64_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<transition source="58_0" destination="61_0" executionTime="34" shift="0"> <messageserver sender="c1" owner="a" title="REQUESTTICKET"/></transition>
+<state id="65_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">requestTicket()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="64" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="58_0" destination="65_0" executionTime="34" shift="0"> <messageserver sender="a" owner="c2" title="TICKETISSUED"/></transition>
+<state id="66_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>36</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="61_0" destination="66_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="67_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="64" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="61_0" destination="67_0" executionTime="34" shift="0"> <messageserver sender="a" owner="c2" title="TICKETISSUED"/></transition>
+<transition source="62_0" destination="66_0" executionTime="34" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<state id="68_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>36</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="a">ticketIssued()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="64_0" destination="68_0" executionTime="34" shift="0"> <messageserver sender="ts" owner="a" title="TICKETISSUED"/></transition>
+<transition source="65_0" destination="67_0" executionTime="34" shift="0"> <messageserver sender="c1" owner="a" title="REQUESTTICKET"/></transition>
+<state id="69_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>36</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="64" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="70_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>36</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>36</now>
+		<pc>0</pc>
+		<res>36</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>36</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="64" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>36</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="69_0" destination="70_0" executionTime="34" shift="0"> <time value="2"/></transition>
+<transition source="67_0" destination="69_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<transition source="66_0" destination="69_0" executionTime="34" shift="0"> <messageserver sender="a" owner="c2" title="TICKETISSUED"/></transition>
+<state id="71_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>36</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="64" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="72_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>36</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>36</now>
+		<pc>0</pc>
+		<res>36</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="64" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>36</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>36</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="71_0" destination="72_0" executionTime="34" shift="0"> <time value="2"/></transition>
+<transition source="68_0" destination="71_0" executionTime="34" shift="0"> <messageserver sender="a" owner="c1" title="TICKETISSUED"/></transition>
+<transition source="63_0" destination="68_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<state id="73_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c2)</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="64" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="63_0" destination="73_0" executionTime="34" shift="0"> <messageserver sender="a" owner="c1" title="TICKETISSUED"/></transition>
+<transition source="60_0" destination="63_0" executionTime="34" shift="0"> <messageserver sender="c2" owner="a" title="REQUESTTICKET"/></transition>
+<state id="74_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">requestTicket()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="64" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="60_0" destination="74_0" executionTime="34" shift="0"> <messageserver sender="a" owner="c1" title="TICKETISSUED"/></transition>
+<transition source="73_0" destination="71_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="REQUESTTICKET"/></transition>
+<transition source="74_0" destination="73_0" executionTime="34" shift="0"> <messageserver sender="c2" owner="a" title="REQUESTTICKET"/></transition>
+<state id="75_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+			<message arrival="32" deadline="56" sender="a">requestTicket(c2)</message>
+			<message arrival="34" deadline="58" sender="a">requestTicket(c1)</message>
+		</queue>
+		<now>34</now>
+		<pc>0</pc>
+		<res>34</res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="49_0" destination="75_0" executionTime="34" shift="0"> <messageserver sender="c1" owner="a" title="REQUESTTICKET"/></transition>
+<transition source="49_0" destination="53_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<state id="76_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="64" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="54_0" destination="76_0" executionTime="34" shift="0"> <messageserver sender="a" owner="c1" title="TICKETISSUED"/></transition>
+<transition source="54_0" destination="60_0" executionTime="34" shift="0"> <messageserver sender="c2" owner="c2" title="TRY"/></transition>
+<transition source="52_0" destination="58_0" executionTime="34" shift="0"> <messageserver sender="c1" owner="c1" title="TRY"/></transition>
+<state id="77_0" atomicpropositions="" >
+	<rebec name="a">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="ts">
+		<statevariables>
+			<variable name="TicketService.issueDelay" type="int">2</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c1">
+		<statevariables>
+			<variable name="Customer.id" type="byte">1</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="34" deadline="infinity" sender="c1">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="c2">
+		<statevariables>
+			<variable name="Customer.id" type="byte">2</variable>
+			<variable name="Customer.sent" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="64" deadline="infinity" sender="c2">try()</message>
+		</queue>
+		<now>34</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="52_0" destination="77_0" executionTime="34" shift="0"> <messageserver sender="a" owner="c2" title="TICKETISSUED"/></transition>
+<transition source="75_0" destination="57_0" executionTime="34" shift="0"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<transition source="76_0" destination="74_0" executionTime="34" shift="0"> <messageserver sender="c2" owner="c2" title="TRY"/></transition>
+<transition source="77_0" destination="65_0" executionTime="34" shift="0"> <messageserver sender="c1" owner="c1" title="TRY"/></transition>
+<transition source="72_0" destination="33_0" executionTime="36" shift="32"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+<transition source="70_0" destination="32_0" executionTime="36" shift="32"> <messageserver sender="a" owner="ts" title="tau=>REQUESTTICKET"/></transition>
+</transitionsystem>

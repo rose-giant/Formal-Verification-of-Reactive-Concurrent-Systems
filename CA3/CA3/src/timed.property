@@ -1,0 +1,10 @@
+property {
+
+	define {
+		isSafetyViolated = ctrl.safetyCheck;
+	}
+
+	Assertion {
+		Safety: !isSafetyViolated;
+	}
+}

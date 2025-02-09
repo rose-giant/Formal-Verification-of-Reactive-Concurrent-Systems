@@ -1,0 +1,303 @@
+
+env int MAX_BLOCK_NUM = 10;
+
+reactiveclass Controller(6) {
+	Controller () {
+		initVars();
+	}
+
+	statevars {
+		boolean [10] shouldStop;
+		boolean [10] shouldChangeLine;
+
+		boolean [10] autoLine;
+		boolean [10] mannedLine;
+
+		boolean answeredAuto;
+		boolean answeredManned;
+		
+		int [10] autoBlock;
+		int [10] mannedBlock;
+		
+		boolean lastWasAuto;
+		
+		boolean safetyCheck; 
+	}
+
+	knownrebecs {
+	}
+
+	void initVars () {
+		safetyCheck = false;
+		lastWasAuto = false;
+
+		for (int i = 0 ; i < MAX_BLOCK_NUM ; i++) {
+			shouldStop[i] = false;
+			shouldChangeLine[i] = false;
+			autoLine[i] = true;
+			mannedLine[i] = false;
+			autoBlock [i] = 100;
+			mannedBlock[i] = 200;
+		}
+
+	}
+
+	void check() {
+		for (int i = 0; i < MAX_BLOCK_NUM; i++) {
+
+			for(int j = 0; j < MAX_BLOCK_NUM; j++) {
+
+				if (autoLine[i] != mannedLine[j] && (autoBlock[i] == mannedBlock[j]+1 || autoBlock[i] == mannedBlock[j]+1) ) {
+					shouldStop[i] = true;
+				}
+
+				if (autoLine[i] == mannedLine[j] && (autoBlock[i] == mannedBlock[j]+1 || autoBlock[i] == mannedBlock[j]+1) ) {
+					shouldStop[i] = true;
+					shouldChangeLine[j] = true;
+				}
+
+				if (autoLine[i] == mannedLine[j] && autoBlock[i] == mannedBlock[j]) {
+					safetyCheck = true;
+				}
+
+				//The assertion
+				assertion(!safetyCheck);
+			}
+		}
+	}
+
+	msgsrv isAllowed(boolean line, int block, int id, boolean isAuto) {
+		delay(1);
+
+		if (isAuto) {
+			autoBlock[id] = block;
+			autoLine[id] = line;
+			
+			check();
+			((Infrastructure)sender).canMove(shouldStop[id], id, true);
+			lastWasAuto = true;
+		}
+
+		if(!isAuto) {
+			mannedBlock [id] = block;
+			mannedLine [id] =line;
+			
+			check();
+			((Infrastructure)sender).canMove(shouldChangeLine[id], id, false);
+			lastWasAuto = false;
+		} 	
+	}
+
+}
+
+reactiveclass Infrastructure(6) {
+	Infrastructure () {
+	}
+
+	statevars {
+		Auto [10] autoCars;
+		Manned [10] mannedCars;
+	}
+
+	knownrebecs {
+		Controller ctrl;
+	}
+
+	msgsrv isAllowed(boolean line, int block, int id, boolean isAuto) {
+		delay(1);
+
+		if (isAuto) {
+			autoCars[id] = ((Auto)sender);
+			ctrl.isAllowed(line, block, id, true);
+		}
+
+		if (!isAuto) {
+			mannedCars[id] = ((Manned) sender);
+			ctrl.isAllowed(line, block, id, false);
+		}
+	}
+
+	msgsrv canMove(boolean canMove, int id, boolean isAuto) {
+		delay(1);
+
+		if (isAuto) {
+			autoCars[id].canMove(canMove, true);
+		}
+		
+		if (!isAuto) {
+			mannedCars[id].canMove(canMove, false);
+		}
+	}
+}
+
+reactiveclass Auto(3) {
+
+	Auto(int inputId) {
+		id = inputId;
+		initVars();
+		move();
+	}
+
+	statevars {
+		boolean shouldStop;
+		boolean line;
+		int id;
+		int block;
+		boolean up;
+		boolean asked;
+		boolean askedCtrl;
+		boolean firstStep;
+		boolean lastStep; 
+	}
+
+	knownrebecs {
+		Infrastructure infra;
+	}
+
+	void initVars () {
+		up = false;
+		line = true;
+		block = MAX_BLOCK_NUM-1;
+		asked = false;
+		firstStep = true;
+		lastStep = false;
+	}
+
+	msgsrv canMove(boolean canMove, boolean isAuto) {
+		if (isAuto) {
+			shouldStop = canMove;
+			asked = true;
+		}
+	}
+
+	msgsrv live() {
+		delay(1);
+		move();
+	}
+
+	void move() {
+		if (block == 1) {
+			lastStep = true;
+		}
+
+		if (asked || firstStep) {
+
+			firstStep = false;
+			infra.isAllowed(line, block, id, true) deadline(4);
+			asked = false;
+
+			if (!shouldStop) {	
+				if (up && block == MAX_BLOCK_NUM) {
+					block--;
+					up = !up;
+				}
+
+				if (!up && block == 1) {
+					up = !up;
+					block++;
+				}
+
+				if (up && block < MAX_BLOCK_NUM && block > 1) {
+					block++;
+				}
+				
+				if (!up && block < MAX_BLOCK_NUM && block > 1) {
+					block--;
+				}
+			}
+
+		}
+		
+		self.live() deadline(1);
+	}
+}
+
+reactiveclass Manned (3) {
+	Manned(int inputId) {
+		id = inputId;
+		initVars();
+		move();
+	}
+
+	statevars {
+		int id;
+		boolean shouldChange;
+		boolean line;
+		int block;
+		boolean up;
+		boolean asked;
+		boolean askedCtrl;
+		boolean firstStep;
+		boolean randomMoved;
+	}
+	
+	knownrebecs {
+		Infrastructure infra;
+	}
+	
+	void initVars () {
+		line = false;
+		block = 1;
+		asked = false;
+		firstStep = true;
+		up = true;
+	}
+
+	msgsrv canMove(boolean canMove, boolean isAuto) {
+		if (!isAuto) {
+			shouldChange = canMove;
+			asked = true;
+			if (up && block == MAX_BLOCK_NUM) {
+				block--;
+				up = !up;
+			}
+	
+			if (!up && block == 0) {
+				up = !up;
+				block++;
+			}
+			
+			if (up && block < MAX_BLOCK_NUM && block > 0) {
+				block++;
+			}
+			
+			if (!up && block < MAX_BLOCK_NUM && block > 0) {
+				block--;
+			}
+			asked = false;
+		}
+	}
+
+	msgsrv live() {
+		delay (?(1, 2, 3));
+		move();
+	}
+	
+	msgsrv randomMove() {
+		up = ?(true, false);
+		randomMoved = true;
+	}
+
+	void move() {
+		if (asked || firstStep) {
+			firstStep = false;
+			infra.isAllowed(line, block, id, false) deadline(4);
+		}
+		self.live() deadline(1);
+	}
+}
+
+main {
+	Infrastructure infra(ctrl):();
+	Controller ctrl():();
+	
+	Auto auto1(infra):(0);
+	Manned manned1(infra):(0);
+	
+	//Auto auto2(infra):(1);
+	//Manned manned2(infra):(1);
+
+//	Auto auto3(infra):(2);
+//	Manned manned3(infra):(2);
+}
+

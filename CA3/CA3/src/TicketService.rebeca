@@ -1,0 +1,58 @@
+reactiveclass Customer(3) {
+	knownrebecs {
+		Agent a;
+	}
+	statevars {
+		byte id;
+		boolean sent;
+	}
+	Customer(byte myId) {
+		id = myId;
+		sent = false;
+		self.try();
+	}
+	msgsrv try() {
+		a.requestTicket();
+		sent = true;
+	}
+	msgsrv ticketIssued() {
+		sent = false;
+		self.try() after(30);
+	}
+}
+reactiveclass Agent(10) {
+	knownrebecs {
+		TicketService ts;
+	}
+	statevars {
+	}
+	Agent() {
+	}
+	msgsrv requestTicket() {
+		ts.requestTicket((Customer)sender) deadline(24);
+	}
+	msgsrv ticketIssued(Customer customer) {
+		customer.ticketIssued();
+	}
+}
+reactiveclass TicketService(10) {
+	knownrebecs {
+		Agent a;
+	}
+	statevars {
+		int issueDelay;
+	}
+	TicketService(int myIssueDelay) {
+		issueDelay = myIssueDelay;
+	}
+	msgsrv requestTicket(Customer customer) {
+		delay(issueDelay);
+		a.ticketIssued(customer);
+	}
+}
+main {
+	Agent a(ts):();
+	TicketService ts(a):(2);
+	Customer c1(a):(1);
+	Customer c2(a):(2);
+}

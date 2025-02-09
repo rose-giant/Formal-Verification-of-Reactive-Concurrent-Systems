@@ -1,0 +1,24 @@
+<model-checking-report>
+<system-info>
+	<total-spent-time>1</total-spent-time>
+	<reached-states>743</reached-states>
+	<reached-transitions>917</reached-transitions>
+	<consumed-mem>17832</consumed-mem>
+</system-info>
+<checked-property>
+	<type>Reachability</type>
+	<name>Deadlock-Freedom and No Deadline Missed</name>
+	<result>satisfied</result>
+<options>
+	<option>Export state space</option>
+	<option>Safe mode is enabled</option>
+	<option>TTS</option>
+</options>
+</checked-property>
+<extra-details>
+	<timed-states>176</timed-states>
+	<timed-transitions>181</timed-transitions>
+</extra-details>
+<counter-example-trace>
+</counter-example-trace>
+</model-checking-report>
